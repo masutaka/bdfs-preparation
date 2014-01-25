@@ -4,12 +4,22 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.10/angular.min.js"></script>
   </head>
   <body>
-    <div>
-      <label>Name:</label>
-      <input type="text" ng-model="yourName" placeholder="Enter a name here">
-      <hr>
-      <h1>Hello {{yourName}}!</h1>
-      <p>1 + 2 = {{ 1 + 2 }}</p>
+
+    <div ng-controller="ctrlRead">
+      <h4>ブレイブリーデフォルト 調合</h4>
+      <p ng-repeat="item in items | filter:{description:value2}">名前：{{item.name}} , 説明：{{item.description}}</p>
+      <br />何か入力してみて下さい。<br /><input ng-model="value2" /><br /><br />
     </div>
+
+    <script>
+     function ctrlRead($scope) {
+       $scope.items = [
+         {"name":        "ポーション",
+          "description": "対象のＨＰを300回復する"},
+         {"name":        "ハイポーション",
+          "description": "対象のＨＰを1,000回復する"}
+       ];
+     };
+    </script>
   </body>
 </html>
