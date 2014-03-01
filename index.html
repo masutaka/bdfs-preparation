@@ -5,16 +5,16 @@
   </head>
   <body>
 
-    <div ng-controller="ctrlRead">
-      <h3>ブレイブリーデフォルト 調合</h3>
+    <h1>ブレイブリーデフォルト 調合</h1>
 
-      <h4>アイテム１</h4>
+    <div ng-controller="ctrlRead">
+      <h2>アイテム１</h2>
       <input type="radio" ng-model="query.name" name="item1" value="">全部
       <input type="radio" ng-model="query.name" name="item1" value="ポーション">ポーション
       <input type="radio" ng-model="query.name" name="item1" value="ハイポーション">ハイポーション
       <input type="radio" ng-model="query.name" name="item1" value="エリクサー">エリクサー
 
-      <h4>アイテム２</h4>
+      <h2>アイテム２</h2>
       <ul ng-repeat="item in items | filter:query">
         <li type="radio" name="item2" value="{{item.id}}">{{item.name}} , {{item.description}}</li>
       </ul>
