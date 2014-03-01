@@ -6,18 +6,46 @@
   <body>
 
     <div ng-controller="ctrlRead">
-      <h4>ブレイブリーデフォルト 調合</h4>
-      <p ng-repeat="item in items | filter:{description:value2}">名前：{{item.name}} , 説明：{{item.description}}</p>
-      <br />何か入力してみて下さい。<br /><input ng-model="value2" /><br /><br />
+      <h3>ブレイブリーデフォルト 調合</h3>
+
+      <h4>アイテム１</h4>
+      <input type="radio" ng-model="query.name" name="item1" value="">全部
+      <input type="radio" ng-model="query.name" name="item1" value="ポーション">ポーション
+      <input type="radio" ng-model="query.name" name="item1" value="ハイポーション">ハイポーション
+
+      <h4>アイテム２</h4>
+      <ul ng-repeat="item in items | filter:query">
+        <li type="radio" name="item2" value="{{item.id}}">{{item.name}} , {{item.description}}</li>
+      </ul>
     </div>
 
     <script>
      function ctrlRead($scope) {
        $scope.items = [
-         {"name":        "ポーション",
-          "description": "対象のＨＰを300回復する"},
-         {"name":        "ハイポーション",
-          "description": "対象のＨＰを1,000回復する"}
+         {"id":           1,
+          "name":        "ポーション",
+          "description": "HPを150回復する"},
+         {"id":           2,
+          "name":        "ハイポーション",
+          "description": "HPを500回復する"},
+         {"id":           3,
+          "name":        "エクスポーション",
+          "description": "HPを1500回復する"},
+         {"id":           4,
+          "name":        "フェニックスの尾",
+          "description": "戦闘不能を回復する"},
+         {"id":           5,
+          "name":        "エーテル",
+          "description": "MPを40回復する"},
+         {"id":           6,
+          "name":        "エーテルターボ",
+          "description": "MPを150回復する"},
+         {"id":           7,
+          "name":        "エリクサー",
+          "description": "HPとMPを全回復する"},
+         {"id":           8,
+          "name":        "ラストエリクサー",
+          "description": "パーティ全体のHPとMPを全回復する"}
        ];
      };
     </script>
