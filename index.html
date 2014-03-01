@@ -9,46 +9,24 @@
 
     <div ng-controller="ctrlRead">
       <h2>アイテム１</h2>
-      <input type="radio" ng-model="query.name" name="item1" value="">全部
-      <input type="radio" ng-model="query.name" name="item1" value="ポーション">ポーション
-      <input type="radio" ng-model="query.name" name="item1" value="ハイポーション">ハイポーション
-      <input type="radio" ng-model="query.name" name="item1" value="エリクサー">エリクサー
+      <ul>
+        <li><input type="radio" ng-model="query.item1" name="item1" value="ポーション">ポーション（HPを150回復する）</li>
+        <li><input type="radio" ng-model="query.item1" name="item1" value="ハイポーション">ハイポーション（HPを500回復する）</li>
+        <li><input type="radio" ng-model="query.item1" name="item1" value="エクスポーション">エクスポーション（HPを1500回復する）</li>
+        <li><input type="radio" ng-model="query.item1" name="item1" value="フェニックスの尾">フェニックスの尾（戦闘不能を回復する）</li>
+        <li><input type="radio" ng-model="query.item1" name="item1" value="エーテル">エーテル（MPを40回復する）</li>
+        <li><input type="radio" ng-model="query.item1" name="item1" value="エーテルターボ">エーテルターボ（MPを150回復する）</li>
+        <li><input type="radio" ng-model="query.item1" name="item1" value="エリクサー">エリクサー（HPとMPを全回復する）</li>
+        <li><input type="radio" ng-model="query.item1" name="item1" value="ラストエリクサー">ラストエリクサー（パーティ全体のHPとMPを全回復する）</li>
+      </ul>
 
       <h2>アイテム２</h2>
-      <ul ng-repeat="item in items | filter:query">
-        <li type="radio" name="item2" value="{{item.id}}">{{item.name}} , {{item.description}}</li>
+      <ul>
+        <li ng-repeat="combination in combinations | filter:query">
+          {{combination.item2}} → {{combination.result}}（{{combination.description}}）</li>
+        </li>
       </ul>
     </div>
-
-    <script>
-     function ctrlRead($scope) {
-       $scope.items = [
-         {"id":           1,
-          "name":        "ポーション",
-          "description": "HPを150回復する"},
-         {"id":           2,
-          "name":        "ハイポーション",
-          "description": "HPを500回復する"},
-         {"id":           3,
-          "name":        "エクスポーション",
-          "description": "HPを1500回復する"},
-         {"id":           4,
-          "name":        "フェニックスの尾",
-          "description": "戦闘不能を回復する"},
-         {"id":           5,
-          "name":        "エーテル",
-          "description": "MPを40回復する"},
-         {"id":           6,
-          "name":        "エーテルターボ",
-          "description": "MPを150回復する"},
-         {"id":           7,
-          "name":        "エリクサー",
-          "description": "HPとMPを全回復する"},
-         {"id":           8,
-          "name":        "ラストエリクサー",
-          "description": "パーティ全体のHPとMPを全回復する"}
-       ];
-     };
-    </script>
+    <script src="script.js"></script>
   </body>
 </html>
